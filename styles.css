@@ -12,6 +12,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 header {
@@ -25,7 +26,7 @@ header h1 {
     margin-bottom: 0.5rem;
 }
 
-nav {
+body > nav {
     position: sticky;
     top: 0;
     background-color: #34495e;
@@ -47,6 +48,37 @@ nav a {
 
 nav a:hover {
     text-decoration: underline;
+}
+
+.submenu-trigger {
+    position: relative;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #34495e;
+    list-style: none;
+    min-width: 150px;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.submenu-trigger:hover .submenu {
+    display: block;
+}
+
+.submenu li a {
+    display: block;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.submenu li a:hover {
+    background: #2c3e50;
 }
 
 .menu-toggle {
@@ -82,10 +114,99 @@ section h2 {
     margin-bottom: 1rem;
 }
 
-article {
-    border-left: 4px solid #3498db;
-    padding-left: 1rem;
-    margin-bottom: 1rem;
+#inicio {
+    grid-column: 1 / -1;
+}
+
+#inicio h2 {
+    grid-column: 1 / -1;
+}
+
+.carousel-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.carousel-btn {
+    background: #3498db;
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.25rem;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.3s;
+    z-index: 10;
+}
+
+.carousel-btn:hover {
+    background: #2980b9;
+}
+
+.carousel-btn:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+}
+
+.book-carousel {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 1rem 0;
+    scrollbar-width: none;
+    flex: 1;
+    min-width: 0;
+}
+
+.book-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+article.card {
+    flex: 0 0 220px;
+    background: white;
+    border-radius: 12px;
+    padding: 1.25rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    margin-bottom: 0;
+}
+
+article.card img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    display: block;
+    border-radius: 8px;
+}
+
+article.card .btn-comprar {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    margin-top: 0.75rem;
+    background: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+}
+
+article.card .btn-comprar:hover {
+    background: #219a52;
+}
+
+article .precio {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #27ae60;
+    margin-top: 0.5rem;
 }
 
 aside {
@@ -117,40 +238,37 @@ footer nav a {
 }
 
 @media (max-width: 768px) {
-    nav {
-        position: relative;
-        z-index: 1000;
-    }
-
+    /* --- Menú hamburguesa --- */
     .menu-toggle {
         position: fixed;
-        top: 1rem;
-        left: 1rem;
+        top: 0.75rem;
+        left: 0.75rem;
         width: 44px;
         height: 44px;
         opacity: 0;
-        z-index: 1004;
+        z-index: 1005;
         cursor: pointer;
     }
 
     .menu-overlay {
         position: fixed;
         top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
         background: rgba(0, 0, 0, 0.5);
         opacity: 0;
         visibility: hidden;
         transition: opacity 0.3s, visibility 0.3s;
-        z-index: 100;
+        z-index: 1001;
         cursor: pointer;
     }
 
     .menu-btn {
         display: block;
         position: fixed;
-        top: 1rem;
-        left: 1rem;
+        top: 0.75rem;
+        left: 0.75rem;
         width: 44px;
         height: 44px;
         background: #2c3e50;
@@ -159,26 +277,35 @@ footer nav a {
         text-align: center;
         line-height: 44px;
         cursor: pointer;
-        z-index: 1003;
+        z-index: 1004;
         border-radius: 4px;
         box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
 
-    nav ul.menu-list {
-        display: flex;
+    body > nav {
         position: fixed;
         top: 0;
-        left: -250px;
-        width: 250px;
+        left: 0;
+        width: 100%;
+        z-index: 1002;
+        background: transparent;
+    }
+
+    nav ul.menu-list {
+        position: fixed;
+        top: 0;
+        left: -280px;
+        width: 280px;
         height: 100%;
         flex-direction: column;
         gap: 0;
-        padding-top: 70px;
+        padding-top: 60px;
         padding-left: 0;
-        background: #34495e;
+        background: #2c3e50;
         transition: left 0.3s;
-        z-index: 2000;
+        z-index: 1003;
         list-style: none;
+        margin: 0;
     }
 
     nav ul.menu-list li {
@@ -193,24 +320,82 @@ footer nav a {
         text-decoration: none;
     }
 
+    nav ul.menu-list li.submenu-trigger .submenu {
+        display: none;
+        position: static;
+        transform: none;
+        box-shadow: none;
+        background: rgba(0,0,0,0.2);
+        list-style: none;
+        padding-left: 0;
+    }
+
+    nav ul.menu-list li.submenu-trigger:hover .submenu,
+    nav ul.menu-list li.submenu-trigger .submenu li a {
+        display: block;
+    }
+
+    nav ul.menu-list li.submenu-trigger > a::after {
+        content: " ▼";
+        font-size: 0.8em;
+    }
+
+    nav ul.menu-list li.submenu-trigger .submenu li a {
+        padding: 0.75rem 1rem;
+    }
+
     .menu-toggle:checked ~ .menu-overlay {
         opacity: 1;
         visibility: visible;
     }
 
     .menu-toggle:checked ~ nav .menu-btn {
-        left: 260px;
+        left: 285px;
     }
 
     .menu-toggle:checked ~ nav ul.menu-list {
         left: 0;
     }
 
+    /* --- Layout general --- */
+    header {
+        padding: 1.25rem 1rem 1.25rem 3.5rem;
+        text-align: left;
+    }
+
+    header h1 {
+        font-size: 1.4rem;
+    }
+
+    header p {
+        font-size: 0.85rem;
+        opacity: 0.85;
+    }
+
     main {
         grid-template-columns: 1fr;
         padding: 1rem;
+        padding-top: 1.5rem;
     }
 
+    section {
+        padding: 1rem;
+    }
+
+    footer {
+        padding: 1.25rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    footer p {
+        margin-bottom: 0.5rem;
+    }
+
+    footer > nav {
+        line-height: 2;
+    }
+
+    /* --- Formulario --- */
     form {
         width: 100%;
     }
@@ -241,7 +426,8 @@ footer nav a {
         resize: vertical;
     }
 
-    button {
+    button[type="submit"],
+    button[type="reset"] {
         padding: 0.75rem 1.5rem;
         margin-right: 0.5rem;
         margin-top: 0.5rem;
@@ -259,5 +445,60 @@ footer nav a {
     button[type="reset"] {
         background-color: #95a5a6;
         color: white;
+    }
+}
+
+/* Tablet: 769px–900px — header y footer ajustados */
+@media (min-width: 769px) and (max-width: 900px) {
+    header {
+        padding: 1.25rem 1.5rem;
+    }
+
+    header h1 {
+        font-size: 1.6rem;
+    }
+
+    footer {
+        padding: 1.25rem 1.5rem;
+    }
+
+    footer > nav {
+        margin-top: 0.5rem;
+    }
+}
+
+/* Tablet: hasta 900px — 2 cards visibles con scroll snap táctil */
+@media (max-width: 900px) {
+    .carousel-btn {
+        display: none;
+    }
+
+    .book-carousel {
+        scroll-snap-type: x mandatory;
+        gap: 1rem;
+        padding: 0.75rem 0;
+    }
+
+    article.card {
+        flex: 0 0 calc(50% - 0.5rem);
+        scroll-snap-align: start;
+    }
+}
+
+/* Mobile: hasta 600px — 1 card visible centrada con scroll snap */
+@media (max-width: 600px) {
+    .carousel-container {
+        gap: 0;
+    }
+
+    .book-carousel {
+        gap: 0.75rem;
+        padding: 0.5rem 0;
+    }
+
+    article.card {
+        flex: 0 0 calc(100% - 0.75rem);
+        padding: 1rem;
+        scroll-snap-align: center;
     }
 }

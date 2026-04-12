@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Plataforma de reseñas de libros">
-    <title>BookLog - Reseñas de Libros</title>
+    <meta name="description" content="Librería online con los mejores libros de todas las categorías">
+    <title>Mi Librería - Tu tienda de libros online</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>BookLog</h1>
-        <p>Tu comunidad de reseñas literarias!</p>
+        <h1>Mi Librería</h1>
+        <p>Los mejores libros a un clic de distancia</p>
     </header>
 
     <input type="checkbox" id="menu-toggle" class="menu-toggle">
@@ -20,58 +20,118 @@
         <label for="menu-toggle" class="menu-btn">☰</label>
         <ul class="menu-list">
             <li><a href="index.html">Inicio</a></li>
-            <li><a href="#explorar">Explorar</a></li>
-            <li><a href="#listas">Listas</a></li>
-            <li><a href="#perfil">Mi Perfil</a></li>
+            <li class="submenu-trigger">
+                <a href="#explorar">Explorar</a>
+                <ul class="submenu">
+                    <li><a href="#">Fantasía</a></li>
+                    <li><a href="#">Ciencia Ficción</a></li>
+                    <li><a href="#">Misterio</a></li>
+                    <li><a href="#">Romance</a></li>
+                    <li><a href="#">Drama</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Novedades</a></li>
+            <li><a href="#">Ofertas</a></li>
             <li><a href="contact.html">Contacto</a></li>
         </ul>
     </nav>
 
     <main>
         <section id="inicio">
-            <h2>Libros Populares</h2>
-            <article>
-                <h3>El nombre del viento</h3>
-                <p>Patrick Rothfuss</p>
-                <p>★★★★★</p>
-                <p>Una narrativa épica que mezcla fantasía y melancolía...</p>
-            </article>
-            <article>
-                <h3>Cien años de soledad</h3>
-                <p>Gabriel García Márquez</p>
-                <p>★★★★☆</p>
-                <p>El realismo mágico en su máxima expresión...</p>
-            </article>
+            <h2>Libros Destacados</h2>
+            <div class="carousel-container">
+                <button class="carousel-btn prev" onclick="moveCarousel(-1)">&#10094;</button>
+                <div class="book-carousel" id="bookCarousel">
+                    <article class="card">
+                        <a href="https://example.com/comprar/el-nombre-del-viento" target="_blank">
+                            <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=300" alt="Portada del libro El nombre del viento" loading="lazy">
+                        </a>
+                        <h3>El nombre del viento</h3>
+                        <p>Patrick Rothfuss</p>
+                        <p>★★★★★</p>
+                        <p>Una narrativa épica que mezcla fantasía y melancolía...</p>
+                        <p class="precio">$24.99</p>
+                        <button class="btn-comprar">Comprar</button>
+                    </article>
+                    <article class="card">
+                        <a href="https://example.com/comprar/cien-anos-de-soledad" target="_blank">
+                            <img src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=300" alt="Portada del libro Cien años de soledad" loading="lazy">
+                        </a>
+                        <h3>Cien años de soledad</h3>
+                        <p>Gabriel García Márquez</p>
+                        <p>★★★★☆</p>
+                        <p>El realismo mágico en su máxima expresión...</p>
+                        <p class="precio">$19.99</p>
+                        <button class="btn-comprar">Comprar</button>
+                    </article>
+                    <article class="card">
+                        <a href="https://example.com/comprar/1984" target="_blank">
+                            <img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?w=300" alt="Portada del libro 1984" loading="lazy">
+                        </a>
+                        <h3>1984</h3>
+                        <p>George Orwell</p>
+                        <p>★★★★★</p>
+                        <p>Una distopía sobre el control totalitario y la vigilancia...</p>
+                        <p class="precio">$15.99</p>
+                        <button class="btn-comprar">Comprar</button>
+                    </article>
+                    <article class="card">
+                        <a href="https://example.com/comprar/el-senor-de-los-anillos" target="_blank">
+                            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=300" alt="Portada del libro El Señor de los Anillos" loading="lazy">
+                        </a>
+                        <h3>El Señor de los Anillos</h3>
+                        <p>J.R.R. Tolkien</p>
+                        <p>★★★★★</p>
+                        <p>La épica aventura en la Tierra Media contra el mal...</p>
+                        <p class="precio">$29.99</p>
+                        <button class="btn-comprar">Comprar</button>
+                    </article>
+                    <article class="card">
+                        <a href="https://example.com/comprar/fundacion" target="_blank">
+                            <img src="https://images.unsplash.com/photo-1535905557558-afc4877a26fc?w=300" alt="Portada del libro Fundación" loading="lazy">
+                        </a>
+                        <h3>Fundación</h3>
+                        <p>Isaac Asimov</p>
+                        <p>★★★★☆</p>
+                        <p>Una saga de ciencia ficción sobre el futuro de la humanidad...</p>
+                        <p class="precio">$17.99</p>
+                        <button class="btn-comprar">Comprar</button>
+                    </article>
+                    <article class="card">
+                        <a href="https://example.com/comprar/brave-new-world" target="_blank">
+                            <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=300" alt="Portada del libro Brave New World" loading="lazy">
+                        </a>
+                        <h3>Brave New World</h3>
+                        <p>Aldous Huxley</p>
+                        <p>★★★★☆</p>
+                        <p>Una visión futurista de una sociedad controlada por el placer...</p>
+                        <p class="precio">$14.99</p>
+                        <button class="btn-comprar">Comprar</button>
+                    </article>
+                </div>
+                <button class="carousel-btn next" onclick="moveCarousel(1)">&#10095;</button>
+            </div>
         </section>
-
-        <section id="explorar">
-            <h2>Explorar por Género</h2>
-            <ul>
-                <li><a href="#">Fantasía</a></li>
-                <li><a href="#">Ciencia Ficción</a></li>
-                <li><a href="#">Misterio</a></li>
-                <li><a href="#">Romance</a></li>
-                <li><a href="#">Drama</a></li>
-            </ul>
-        </section>
-
-        <aside>
-            <h2>Reseñas Recientes</h2>
-            <ul>
-                <li>Usuario1 reseñó "1984" - ★★★★☆</li>
-                <li>Usuario2 reseñó "Fundación" - ★★★★★</li>
-                <li>Usuario3 reseñó "Brave New World" - ★★★☆☆</li>
-            </ul>
-        </aside>
     </main>
 
     <footer>
-        <p>&copy; 2026 BookLog. Todos los derechos reservados.</p>
+        <p>&copy; 2026 Mi Librería. Todos los derechos reservados.</p>
         <nav>
             <a href="#">Acerca de</a> | 
             <a href="#">Contacto</a> | 
             <a href="#">Privacidad</a>
         </nav>
     </footer>
+    <script>
+        function moveCarousel(direction) {
+            const carousel = document.getElementById('bookCarousel');
+            const card = carousel.querySelector('.card');
+            const gap = parseFloat(getComputedStyle(carousel).gap) || 24;
+            carousel.scrollBy({
+                left: direction * (card.offsetWidth + gap),
+                behavior: 'smooth'
+            });
+        }
+    </script>
 </body>
 </html>
