@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Plataforma de reseñas de libros">
     <title>BookLog - Reseñas de Libros</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
@@ -12,8 +13,12 @@
         <p>Tu comunidad de reseñas literarias!</p>
     </header>
 
+    <input type="checkbox" id="menu-toggle" class="menu-toggle">
+    <label for="menu-toggle" class="menu-overlay"></label>
+    
     <nav>
-        <ul>
+        <label for="menu-toggle" class="menu-btn">☰</label>
+        <ul class="menu-list">
             <li><a href="index.html">Inicio</a></li>
             <li><a href="#explorar">Explorar</a></li>
             <li><a href="#listas">Listas</a></li>
